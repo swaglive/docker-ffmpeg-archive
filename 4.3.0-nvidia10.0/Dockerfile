@@ -1,6 +1,6 @@
 FROM        nvidia/cuda:11.1-devel as ffmpeg
 
-ARG         NV_CODECS_HEADERS_VERSION=n10.0.26.1
+ARG         NV_CODECS_HEADERS_VERSION=n10.0.26.0
 ARG         FFMPEG_VERSION=n4.3
 ENV         DEBIAN_FRONTEND=noninteractive
 

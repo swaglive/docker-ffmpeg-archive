@@ -1,6 +1,6 @@
 FROM        nvidia/cuda:10.2-devel as ffmpeg
 
-ARG         NV_CODECS_HEADERS_VERSION=n9.1.23.2
+ARG         NV_CODECS_HEADERS_VERSION=n9.1.23.1
 ARG         FFMPEG_VERSION=n4.2.3
 
 RUN         apt-get -y update && \
