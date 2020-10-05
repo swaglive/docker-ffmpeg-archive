@@ -1,4 +1,4 @@
-FROM        nvidia/cuda:10.2-devel as ffmpeg
+FROM        nvidia/cuda:11.1-devel as ffmpeg
 
 ARG         NV_CODECS_HEADERS_VERSION=n10.0.26.1
 ARG         FFMPEG_VERSION=n4.3
@@ -108,7 +108,7 @@ RUN         make -j$(nproc) && \
 
 ###
 
-FROM        nvidia/cuda:10.2-runtime
+FROM        nvidia/cuda:11.1-runtime
 
 ENV         LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ENV         NVIDIA_DRIVER_CAPABILITIES compute,video,utility
