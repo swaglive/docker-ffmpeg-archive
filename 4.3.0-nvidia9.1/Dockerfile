@@ -67,7 +67,7 @@ RUN 		    ./configure \
                 --disable-static \
                 --enable-shared \
                 --enable-nonfree \
-                --enable-avisynth \
+                # --enable-avisynth \
                 --enable-swresample \
                 --enable-avfilter \
                 --enable-openal \
