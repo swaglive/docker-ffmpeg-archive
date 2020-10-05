@@ -2,6 +2,7 @@ FROM        nvidia/cuda:11.1-devel as ffmpeg
 
 ARG         NV_CODECS_HEADERS_VERSION=n9.1.23.2
 ARG         FFMPEG_VERSION=n4.3
+ENV         DEBIAN_FRONTEND=noninteractive
 
 RUN         apt-get -y update && \
             apt-get install -y \
@@ -112,6 +113,7 @@ FROM        nvidia/cuda:11.1-runtime
 
 ENV         LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ENV         NVIDIA_DRIVER_CAPABILITIES compute,video,utility
+ENV         DEBIAN_FRONTEND=noninteractive
 
 ENTRYPOINT  ["ffmpeg"]
 
