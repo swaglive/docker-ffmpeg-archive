@@ -1,4 +1,4 @@
-FROM        nvidia/cuda:11.1-devel as ffmpeg
+FROM        nvidia/cuda:10.2-devel as ffmpeg
 
 ARG         NV_CODECS_HEADERS_VERSION=n10.0.26.0
 ARG         FFMPEG_VERSION=n4.2.3
