@@ -129,14 +129,14 @@ RUN         apt-get -y update && \
                 libxv1 \
                 libass9 \
                 libva2 \
-                libvpx5 \
+                libvpx6 \
                 libwebp6 libwebpdemux2 libwebpmux3 \
                 libfdk-aac1 \
                 libmp3lame0 \
                 libopus0 \
                 libtheora0 \
-                libx264-152 \
-                libx265-146 \
+                libx264-155 \
+                libx265-179 \
                 libva-drm2 \
                 libva-x11-2 \
                 ocl-icd-libopencl1 \
