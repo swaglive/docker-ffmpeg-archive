@@ -1,7 +1,8 @@
-FROM        nvidia/cuda:10.2-devel as ffnvcodec
+FROM        nvidia/cuda:11.1-devel as ffnvcodec
 
 ARG         NV_CODECS_HEADERS_VERSION=n10.0.26.1
 ARG         MAKEFLAGS=-j$(nproc)
+ENV         DEBIAN_FRONTEND=noninteractive
 
 RUN         apt-get update && \
             apt-get install -y \
@@ -16,10 +17,11 @@ RUN         make && \
 
 ###
 
-FROM        nvidia/cuda:10.2-devel as ffmpeg
+FROM        nvidia/cuda:11.1-devel as ffmpeg
 
 ARG         FFMPEG_VERSION=n4.3
 ARG         MAKEFLAGS=-j$(nproc)
+ENV         DEBIAN_FRONTEND=noninteractive
 
 RUN         apt-get -y update && \
             apt-get install -y \
@@ -42,6 +44,10 @@ RUN         apt-get -y update && \
 
 COPY        --from=ffnvcodec /usr/local/include/ffnvcodec /usr/local/include/ffnvcodec
 COPY        --from=ffnvcodec /usr/local/lib/pkgconfig /usr/local/lib/pkgconfig
+
+            # HACK: https://trac.ffmpeg.org/ticket/8790
+RUN         sed -i -e 's|nvccflags_default="-gencode arch=compute_30,code=sm_30 -O2"|nvccflags_default="-gencode arch=compute_75,code=sm_75 -O2"|g' configure && \
+            sed -i -e 's|nvccflags_default="--cuda-gpu-arch=sm_30 -O2"|nvccflags_default="--cuda-gpu-arch=sm_75 -O2"|g' configure
 
 RUN 		    ./configure \
                 --prefix=/usr/local \
@@ -75,10 +81,11 @@ RUN         make && \
 
 ###
 
-FROM        nvidia/cuda:10.2-runtime
+FROM        nvidia/cuda:11.1-runtime
 
 ENV         LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ENV         NVIDIA_DRIVER_CAPABILITIES compute,video,utility
+ENV         DEBIAN_FRONTEND=noninteractive
 
 ENTRYPOINT  ["ffmpeg"]
 
@@ -86,7 +93,7 @@ RUN         apt-get -y update && \
             apt-get install -y \
               libzmq5 \
               libfdk-aac1 \
-              libx264-152 \
+              libx264-155 \
               ocl-icd-libopencl1 \
               libfontconfig1
 
