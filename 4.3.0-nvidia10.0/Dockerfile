@@ -40,7 +40,9 @@ RUN         apt-get -y update && \
                 libx264-dev \
                 libzmq5-dev \
                 libfreetype6-dev \
-                libfontconfig1-dev
+                libfontconfig1-dev \
+                ocl-icd-opencl-dev \
+                opencl-headers
 
 COPY        --from=ffnvcodec /usr/local/include/ffnvcodec /usr/local/include/ffnvcodec
 COPY        --from=ffnvcodec /usr/local/lib/pkgconfig /usr/local/lib/pkgconfig
@@ -95,7 +97,12 @@ RUN         apt-get -y update && \
               libfdk-aac1 \
               libx264-155 \
               ocl-icd-libopencl1 \
-              libfontconfig1
+              opencl-headers \
+              libfontconfig1 \
+              libxcb1 \
+              libxcb-shm0 \
+              libxcb-xfixes0 \
+              libxcb-shape0
 
             # FIX: Device creation failed: -19.
             # REF: https://github.com/microsoft/LightGBM/issues/586
