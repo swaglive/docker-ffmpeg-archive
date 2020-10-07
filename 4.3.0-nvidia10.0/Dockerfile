@@ -1,4 +1,4 @@
-FROM        nvidia/cuda:11.1-devel as ffnvcodec
+FROM        nvidia/cuda:11.0-devel as ffnvcodec
 
 ARG         NV_CODECS_HEADERS_VERSION=n10.0.26.1
 ARG         MAKEFLAGS=-j$(nproc)
@@ -17,7 +17,7 @@ RUN         make && \
 
 ###
 
-FROM        nvidia/cuda:11.1-devel as ffmpeg
+FROM        nvidia/cuda:11.0-devel as ffmpeg
 
 ARG         FFMPEG_VERSION=n4.3
 ARG         MAKEFLAGS=-j$(nproc)
@@ -81,7 +81,7 @@ RUN         make && \
 
 ###
 
-FROM        nvidia/cuda:11.1-runtime
+FROM        nvidia/cuda:11.0-runtime
 
 ENV         LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ENV         NVIDIA_DRIVER_CAPABILITIES compute,video,utility
