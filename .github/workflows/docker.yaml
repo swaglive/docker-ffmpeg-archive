@@ -23,8 +23,6 @@ jobs:
         - "4.2.2-nvidia9.0"
         - "4.2.2-nvidia9.1"
         - "4.2.3-nvidia9.1"
-        - "4.2.3-nvidia10.0"
-        - "4.3.0-nvidia9.1"
         - "4.3.0-nvidia10.0"
 
     steps:
