@@ -86,7 +86,7 @@ RUN         make && \
 FROM        nvidia/cuda:11.0-runtime
 
 ENV         LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-ENV         NVIDIA_DRIVER_CAPABILITIES compute,video,utility
+ENV         NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
 ENV         DEBIAN_FRONTEND=noninteractive
 
 ENTRYPOINT  ["ffmpeg"]
