@@ -95,7 +95,7 @@ RUN         apt-get -y update && \
             apt-get install -y \
               libzmq5 \
               libfdk-aac1 \
-              libx264-155 \
+              libx264-152 \
               ocl-icd-libopencl1 \
               opencl-headers \
               libfontconfig1 \
