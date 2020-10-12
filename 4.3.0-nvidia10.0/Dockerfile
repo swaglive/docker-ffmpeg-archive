@@ -43,7 +43,8 @@ RUN         apt-get -y update && \
                 libfontconfig1-dev \
                 ocl-icd-opencl-dev \
                 opencl-headers \
-                libvulkan-dev
+                libvulkan-dev \
+                libssl-dev
 
 COPY        --from=ffnvcodec /usr/local/include/ffnvcodec /usr/local/include/ffnvcodec
 COPY        --from=ffnvcodec /usr/local/lib/pkgconfig /usr/local/lib/pkgconfig
@@ -78,7 +79,8 @@ RUN 		    ./configure \
                 --enable-libfontconfig \
                 --enable-libfreetype \
                 --enable-cuda-nvcc \
-                --enable-vulkan
+                --enable-vulkan \
+                --enable-openssl
 
 RUN         make && \
             make install
@@ -105,7 +107,8 @@ RUN         apt-get -y update && \
               libxcb-shm0 \
               libxcb-xfixes0 \
               libxcb-shape0 \
-              libvulkan1
+              libvulkan1 \
+              libssl1.1
 
             # FIX: Device creation failed: -19.
             # REF: https://github.com/microsoft/LightGBM/issues/586
