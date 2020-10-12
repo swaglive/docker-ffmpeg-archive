@@ -42,8 +42,7 @@ RUN         apt-get -y update && \
                 libfreetype6-dev \
                 libfontconfig1-dev \
                 ocl-icd-opencl-dev \
-                opencl-headers \
-                libvulkan-dev
+                opencl-headers
 
 COPY        --from=ffnvcodec /usr/local/include/ffnvcodec /usr/local/include/ffnvcodec
 COPY        --from=ffnvcodec /usr/local/lib/pkgconfig /usr/local/lib/pkgconfig
@@ -77,8 +76,7 @@ RUN 		    ./configure \
                 --enable-libx264 \
                 --enable-libfontconfig \
                 --enable-libfreetype \
-                --enable-cuda-nvcc \
-                --enable-vulkan
+                --enable-cuda-nvcc
 
 RUN         make && \
             make install
@@ -104,8 +102,7 @@ RUN         apt-get -y update && \
               libxcb1 \
               libxcb-shm0 \
               libxcb-xfixes0 \
-              libxcb-shape0 \
-              libvulkan1
+              libxcb-shape0
 
             # FIX: Device creation failed: -19.
             # REF: https://github.com/microsoft/LightGBM/issues/586
